@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+    <meta name = "viewport"
+          content="width=device-width, user-scalable=no", initial-scale =1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title> object arrays</title>
+</head>
+
+<body>
+<script>
+    let v1 = 3;
+    let v2 = 3.6;
+    let v3 = 4.2;
+
+    let enginsVolume = [3, 3.6, 4.2];//
+
+    console.log(enginsVolume);
+    console.log(enginsVolume[0]);
+
+    enginsVolume[3] = 4.5;// додати елемент до масиву
+    console.log(enginsVolume);
+
+    enginsVolume[2] = 4.8;//зміна значення елементу в масиві
+    console.log(enginsVolume);
+
+    console.log(enginsVolume.length);
+
+    enginsVolume[100] = 'oksana';
+    console.log(enginsVolume);
+
+    console.log(enginsVolume.length / 2);
+
+    let round = Math.round(enginsVolume.length / 2);//заокруглює до більшого
+    console.log(round);
+
+    let floor = Math.floor(enginsVolume.length / 2);//заокруглює до меншого
+    console.log(floor);
+
+    enginsVolume[floor] = 'okten school';
+    console.log(enginsVolume);
+
+/* array in array */
+
+    //let rap = ['coolio', '2pac', 'eminem', 'snoop dog'];
+    //let rock = ['queen', 'pink floyd', 'acdc'];
+    let music= [
+        ['coolio', '2pac', 'eminem', 'snoop dog'],
+        ['queen', 'pink floyd', 'acdc']
+        ];
+
+    //let music = [rap, rock];
+    console.log(music);
+
+    console.log(music[0]);
+    console.log(music[1][2]);
+    console.log(music[0][2]);
+// objects
+
+    let user1 = {
+        name: 'oksana',
+        age: 33,
+        status: true
+    };
+    console.log(user1);
+
+    let car = {
+        producer: 'porsche',
+        model: 'cayenne',
+        volume: 3.6,
+        turbo: false,
+        wheels: [
+            {radius:21,producer:'toyo',side:'front'},
+            {radius:21,producer:'toyo',side:'front'},
+            {radius:22,producer:'nokian',side:'back'},
+            {radius:22,producer:'nokian',side:'back'},
+        ]
+    };
+    console.log(car);
+
+    console.log(car.model);
+    console.log(car['volume']);
+    console.log(car.wheels);
+    console.log(car.wheels[2]);
+
+    let wheel1 = car.wheels[0].producer;
+    console.log(wheel1);
+
+    let w = [
+        {radius: 21, producer: 'toyo', side: 'front'},
+        {radius: 21, producer: 'toyo', side: 'front'},
+        {radius: 22, producer: 'nokian', side: 'back'},
+        {radius: 22, producer: 'nokian', side: 'back'},
+    ];
+
+    console.log(w[3].producer);
+
+    //reference vs primitive
+
+    let x = 100;
+    let y = x; //y=100
+    y = 200; //x=100, y=200
+    console.log(x, y);
+
+    let arr1 = [];
+    let arr2 = arr1;
+    arr2[0] = 'hello';
+    console.log(arr2);
+    console.log(arr1);
+
+    let cat = {};
+    let cat2 = cat;
+    cat2.name = 'koko';
+    cat2.age = 2;
+    console.log(cat2);
+    console.log(cat);
+    delete cat.age;//видалити значення в обєкті
+    console.log(cat);
+
+    const dog = {
+        name: 'flafy'
+    };
+    console.log(dog);
+
+    dog.name = 'kokos';
+    dog.age=2
+    console.log(dog);
+    //навіть якщо якщо обєкт є const можна змінювати дані всеердині обєкту
+    // але не можна створити новий обєкт з тою самою назвою
+    //можна змінювати характеристики обєкту, але не його посилання
+
+    dog = {};//error
+//обєкти і масиви це ссилочні типи даний, тобто ми не створили новий масив а просто створили для нього нове посилання
+
+</script>
+</body>
+
+</html>
