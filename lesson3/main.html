@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+    <meta name = "viewport"
+          content="width=device-width, user-scalable=no, initial-scale =1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>loops </title>
+</head>
+
+<body>
+<script>
+    /*let age = +prompt('what is your age?');//+ змінює string to number
+    console.log(typeof age, age);
+
+    if (age>=18){
+        console.log('Show film');
+    }else {
+        console.log('show cartoon')
+    }*/
+
+   /* let color = prompt('What color do you see?');
+    if (color==='green'){
+        console.log('You can go.');
+    }else if (color === 'yellow'){
+        console.log('Wait');
+    } else if (color === 'red') {
+        console.log('Stop');
+    } else {
+        console.log('better be careful')
+    } */
+
+    /*let color = prompt('What color do you see?');
+    switch (color) {
+        case "green":
+            console.log('go');
+            break;
+        case 'yellow':
+            console.log('wait');
+            break;
+        case "red":
+            console.log('stop');
+            break;
+        default:
+            console.log('?????')
+    }*/
+
+    // ||- or &&-and - оператори порівняння
+    //<15 cartoon
+    //15-18 r&m
+    //>=18 film
+    /*
+    let age = prompt('age?');
+    if (age > 0 && age <= 15){
+        console.log('cartoon');
+    } else if (age > 15 && age < 18){
+        console.log('r&m');
+    } else if(age >=18){
+        console.log('film')
+    } else{
+        console.log('????')
+    } */
+
+    /*let b = confirm('do some action');
+    console.log(b);
+    let x;
+
+    if (b) {
+        x = 100;
+    } else {
+        x = 200;
+    }
+    console.log(x);*/
+
+    //тернальний оператор
+    /*   let x =b ? 100 : 200
+    console.log(x) */
+
+    let user = {
+        name: 'oksana',
+        age: 33
+    };
+    console.log(user.status)
+    if (user.status){
+        if(user.age>30) {
+            console.log('old');
+        }
+    }
+// блок if не спрацює бо в оюєкті немає характ status, як тільки ми її добавимо блок if спрацює
+
+    let name = prompt('enter your name');
+    if (!name){
+        name = 'John Doe';
+    }
+    console.log(name);
+
+
+</script>
+
+</body>
+
+</html>
