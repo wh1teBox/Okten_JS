@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+    <meta name = "viewport"
+          content="width=device-width, user-scalable=no, initial-scale =1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title>Function</title>
+</head>
+
+<body>
+<script>
+
+    //function declaration
+    // let users = [
+    // {name:'vasya', age: 31, status: false},
+    // {name:'petya', age: 30, status: true},
+    // {name:'kolya', age: 29, status: true},
+    // {name:'olya', age: 28, status: false},
+    // {name:'max', age: 30, status: true},
+    // {name:'anya', age: 31, status: false},
+    // {name:'oleg', age: 28, status: false},
+    // {name:'andrey', age: 29, status: true},
+    // {name:'masha', age: 30, status: true},
+    // {name:'olya', age: 31, status: false},
+    // {name:'max', age: 31, status: true}
+    // ];
+
+    // let products = [
+    //     {
+    //         title: 'milk',
+    //         price: 22,
+    //         image: 'https://images.immediate.co.uk/production/volatile/sites/30/2020/02/Glass-and-bottle-of-milk-fe0997a.jpg?quality=90&webp=true&resize=300,272'
+    //     },
+    //     {
+    //         title: 'juice',
+    //         price: 27,
+    //         image: 'https://cdn2.foodviva.com/static-content/food-images/juice-recipes/fresh-tomato-juice-recipe/fresh-tomato-juice-recipe.jpg'
+    //     },
+    //     {
+    //         title: 'bread',
+    //         price: 35,
+    //         image: 'https://www.seriouseats.com/thmb/gBMNe_J1QqbAz_QAXfW7-bRrhnw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/better-no-knead-bread-recipe-hero-01_1-48d654bfadeb4a5caf9b233b00fc74ca.JPG'
+    //     },
+    //     {
+    //         title: 'tea',
+    //         price: 15,
+    //         image: 'https://cdn1.sph.harvard.edu/wp-content/uploads/sites/30/2019/07/beverage-blur-cup-370018-768x560.jpg'
+    //     }
+    // ];
+
+    // function arrayPrinter(array){
+    //     for (const arrayElement of array) {
+    //         console.log(arrayElement)
+    //     }
+    // }
+
+    //arrayPrinter(users);
+    //arrayPrinter(products);
+
+
+    // function sumOfTwoNumbers(a, b){
+    //     let result = a + b;
+    //     return result;
+    // }
+    //
+    // sumOfTwoNumbers(100, 200);
+    // console.log(sumOfTwoNumbers(100,200));
+    //
+
+    // function tax (sum, tax){
+    //     return sum - (sum/100)*tax
+    // }
+    //
+    // let sallaryWithoutPDFO = tax(10000, 20);
+    // console.log(sallaryWithoutPDFO);
+    // let sallaryWithPDFO_and_warTax = tax(sallaryWithoutPDFO, 2);
+    // console.log(sallaryWithPDFO_and_warTax);
+    // let result = tax(sallaryWithPDFO_and_warTax, 5);
+    // console.log(result);
+
+    // function calculator (a, b, action){
+    //     switch (action) {
+    //         case'+':
+    //             return a + b;
+    //         case '-':
+    //             return a - b;
+    //
+    //     }
+    // }
+
+    // function calculator(a, b, action) {
+    //     let result;
+    //     switch(action){
+    //         case '+':
+    //             result = a + b;
+    //             break;
+    //         case '-':
+    //             result = a - b;
+    //             break;
+    //         default:
+    //             result = 0;
+    //     }
+    //     return result;
+    // }
+    //
+    //
+    // calculator(10, 20, '+');
+    // console.log(calculator(10, 20, '-'));
+    // console.log(calculator(10, 20, '+'));
+
+//local&global variables
+
+    // let userName = 'oksana';
+    // function showMessage() {
+    //     userName = "sofia"; // (1) изменяем значение внешней переменной
+    //
+    //     let message = 'Hello, ' + userName;
+    //     console.log(message);
+    // }
+    // console.log(userName); // oksana перед викликом ф-ції
+    // showMessage();
+    // console.log( userName); //sofia, ф-ція змінила значення змінної
+
+    //Якщо однойменна змінна оголошується всередині функції, вона перекриває зовнішню.
+    // Наприклад, у коді нижче функція використовує локальну змінну userName. Зовнішню буде проігноровано:
+
+    let userName = 'oksana';
+
+    function showMessage() {
+        let userName = "sofia"; // обявляємо локальну змінну
+
+        let message = 'Hello, ' + userName; // Hello, sofia
+        console.log(message);
+    }
+    // функція створить і використовуватиме свою власну локальну змінну userName
+    showMessage();
+
+    console.log(userName); // oksana, не змінилася, функція не чіпала зовнішню змінну
+
+    //!!!Глобальні змінні видимі для будь-якої функції (якщо їх не перекривають однойменні локальні змінні).
+    //Бажано зводити використання глобальних змінних до мінімуму. У сучасному коді зазвичай мало чи зовсім немає глобальних змінних.
+    // Хоча вони іноді корисні для зберігання найважливіших «загальнопроектових» даних.
+
+    // function foo (){
+    //     console.log(arguments) //псевдо масив
+    // }
+    //
+    // foo(1, 2, 3, 'abc', true);
+    //
+    // function updateCal (){
+    //     let res1=0
+    //     switch (arguments[0]){
+    //         case '+':
+    //             for (let i = 1; i < arguments.length; i++) {
+    //                 const num = arguments[i];
+    //                 res1 += num;
+    //             }
+    //             break;
+    //         case '-':
+    //             for (let i = 1; i < arguments.length; i++) {
+    //                 const num = arguments[i];
+    //                 res1 -= num;
+    //
+    //             }
+    //             break
+    //     }
+    //     return res1
+    // }
+    //
+    // console.log(updateCal('+', 1, 2, 3, 4));
+
+ //   function expression стрілочна функція
+
+let calc=()=> {
+    return 2000;
+}
+    console.log(calc());
+
+    let zxc = (a, b) => {
+        return a + b
+    };
+
+    //у випадку, якщо стрілочна ф-ція описана в однорядкову дію (немає додаткової змінної) її синтаксичну конструкцію можна скоротити
+
+    let zxc1 = (a, b) => /*return*/ a + b;
+    console.log(zxc1(10, 20));
+    //але якщо потрібно вивести окремо а і б тоді потрібно використовувати звичайну синтаксичну конструкцію ініціалізації {}
+
+    //  *rest argument(варарекс)*/
+    function foobar (a, b ,c,...xxx){
+    console.log(xxx)
+        //(ххх) постійно треба ставити останнім аргументомяк масив невизначених значень
+     // (...ххх) в середині ф-ції буде сприйматися як масив (не псевдо масив)за допомогою якого можна передати у ф-цію п кількість аргументів
+        //a=1, b=2, c=3 4,5 масив невизначених значень
+        //викорисовується коли ти фізично не можеш передати масив як аргумент але можеш через кому передаватикупу значень
+        //один з варіантів синтаксичного оздоблення
+    }
+    foobar(1, 2, 3, 4, 5);
+
+// ф-ція в обєкті
+//обєкти можуть мати в собі ф-цію у вигляді властивості
+//     let user = {
+//         name: 'oksana', age: 33, status: true,
+//         greeting: function (){
+//             console.log(`hello my name is ${user.name}`);
+//         }
+//     }
+//     user.greeting();
+
+     //але у випадку, якщо ми перейменували об'єкт і забули про це, ми можемо звертатися безпосередньо до обєкту не зважаючи яка його назва
+    // для цього використовуємо ключове слово this
+    //this це наш об'єкт
+    let acd = {
+        name: 'oksana', age: 33, status: true,
+        greeting: function () {
+            console.log(this);
+            console.log(`hello my name is ${this.name}`); // this => acd object
+        },
+        vitannya: () => {
+            console.log(`hi my name is ${this.name}`)//виведеться лише hi my name is, this => window object
+        }
+    };
+        acd.greeting();
+        acd.vitannya();
+        console.log(window);
+    //у задекларованої ф-ції є контекст, тобто це означає що дана ф-ція бачить у якості об'єкта той що знаходиться ззовні
+    //контекст у стрілочній ф-ції це об'єкт window (тобто це вікно нашого браузера) і коли ми пишемо this.name функція звертається до обєкта window with property name
+    // у стрілочної ф-ції втрачається контекст ключового слова this
+
+</script>
+</body>
+
+</html>
