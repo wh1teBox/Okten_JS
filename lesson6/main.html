@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+    <meta name = "viewport"
+          content="width=device-width, user-scalable=no, initial-scale =1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Array function </title>
+</head>
+
+<body>
+
+    <script>
+        let str = 'hello okten !!!';
+        //string це масив
+
+        // console.log(str);
+
+        // // let s = str.concat('!!!');//зєднання між собою 2-х string
+        // // console.log(s);
+
+        // console.log(str.toUpperCase());
+        // console.log(str.toLowerCase());
+
+        // console.log(str.startsWith('hel'));
+        //console.log(str.endsWith('en'));
+
+        // console.log(str.substring(0, 7));
+
+        // console.log(str.indexOf('o'));
+        // console.log(str.lastIndexOf('o'));
+        // console.log(str.indexOf('o', 5));
+
+        // let userInfo = 'oleg-31';
+        // let indexOfTyre = userInfo.indexOf('-');
+        // let name = userInfo.substring(0, indexOfTyre);
+        // console.log(name);
+        // let age = userInfo.substring(indexOfTyre + 1, userInfo.length);
+        // console.log(age);
+
+        // console.log(str.charAt(8));
+
+        // // console.log(str.replace('e', '!'));
+
+        // console.log(str.replaceAll('e', '!'));
+
+        //split()
+        //
+        // let userInfo = 'oleg-33';
+        // let split = userInfo.split('-');
+        // console.log(split);
+        // let split = str.split(' ');
+        // console.log(split);
+
+        // let arr = [];
+        // console.log(Array.isArray(arr));
+
+        // // arr[arr.length] = 100;
+        // console.log(arr.push('new element1'));
+        // console.log(arr.push('new element2'));
+        // console.log(arr.push('new element3'));
+        // console.log(arr.push('new element4'));
+        // console.log(arr.push('new element5'));
+        // console.log(arr);
+        //
+        // console.log(arr.pop());
+        // console.log(arr);
+        //
+        // console.log(arr.unshift('!!!'));
+        // console.log(arr);
+        //
+        // console.log(arr.shift());
+        // console.log(arr);
+
+//splice
+//         let users = [
+//         {name:'vasya', age: 31, status: false},
+//         {name:'petya', age: 30, status: true},
+//         {name:'kolya', age: 29, status: true},
+//         {name:'olya', age: 28, status: false},
+//         {name:'max', age: 30, status: true},
+//         {name:'anya', age: 31, status: false},
+//         {name:'oleg', age: 28, status: false},
+//         {name:'andrey', age: 29, status: true},
+//         {name:'masha', age: 30, status: true},
+//         {name:'olya', age: 31, status: false},
+//         {name:'max', age: 31, status: true}
+//         ];
+//         let splice = users.splice(3, 3,'abc');
+//         console.log(users);
+//
+//         let arr = ['a', 'b', 'c', 'd', 'e'];
+//         let del = arr.splice(1, 3);
+//         console.log(del);
+//         console.log(arr);
+        //
+
+//slice
+//  let users = [
+// {name:'vasya', age: 31, status: false},
+// {name:'petya', age: 30, status: true},
+// {name:'kolya', age: 29, status: true},
+// {name:'olya', age: 28, status: false},
+// {name:'max', age: 30, status: true},
+// {name:'anya', age: 31, status: false},
+// {name:'oleg', age: 28, status: false},
+// {name:'andrey', age: 29, status: true},
+// {name:'masha', age: 30, status: true},
+// {name:'olya', age: 31, status: false},
+// {name:'max', age: 31, status: true}
+// ];
+//         let slice = users.slice(4,7);
+//         console.log(slice);
+
+ //concat-обєднує масиви
+ // let users = [
+ // {name:'vasya', age: 31, status: false},
+ // {name:'petya', age: 30, status: true},
+ // {name:'kolya', age: 29, status: true},
+ // {name:'olya', age: 28, status: false},
+ // {name:'max', age: 30, status: true},
+ // {name:'anya', age: 31, status: false},
+ // {name:'oleg', age: 28, status: false},
+ // {name:'andrey', age: 29, status: true},
+ // {name:'masha', age: 30, status: true},
+ // {name:'olya', age: 31, status: false},
+ // {name:'max', age: 31, status: true}
+ // ];
+ //        let concat = users.concat([1, 2, 3]);
+ //        console.log(concat);
+
+
+        //
+        // let join = arr.join(';');
+        // console.log(join);
+        // let nums = [11, 22, 33];
+        //
+        // let concat = arr.concat(nums);
+        // console.log(concat);
+        // console.log(arr);
+        // console.log(nums.reverse());
+        //
+        // console.log(concat);
+        // let slice = concat.slice(0, 4);
+        // console.log(slice);
+        // console.log(concat);
+        //
+        // // let splice = concat.splice(0, 2, '!!!', '#$%^', '*&&^%$65');
+        // // console.log(splice);
+        // // console.log(concat);
+        // // concat.splice(concat.indexOf(11), 1);
+        //
+        // console.log(concat.includes(11));
+        // console.log('hello okten'.includes('ok'));
+
+//forEach()
+        let users = [
+        {name:'vasya', age: 31, status: false},
+        {name:'petya', age: 30, status: true},
+        {name:'kolya', age: 29, status: true},
+        {name:'olya', age: 28, status: false},
+        {name:'max', age: 30, status: true},
+        {name:'anya', age: 31, status: false},
+        {name:'oleg', age: 28, status: false},
+        {name:'andrey', age: 29, status: true},
+        {name:'masha', age: 30, status: true},
+        {name:'olya', age: 31, status: false},
+        {name:'max', age: 31, status: true}
+        ];
+
+        // let asd = function (x){
+        //     console.log('Hello world',x);
+        // }
+        // users.forEach(asd);//call back function,окремо ф-цію викликати не потрібно
+
+        //щоб вивести тільки значення true !-1false
+        // let abc = function (user){
+        //     if (user.status) {
+        //         console.log(user)
+        //     }
+        // }
+        // users.forEach(abc);
+
+        //ф-цію не обовязково робити ззовні, її можна передати зразу всередині методу forEach()
+        // users.forEach(function abc(user) {
+        //     if (!user.status) {
+        //         console.log(user);
+        //     }
+        // });
+
+        //синтаксична конструкція використовуючи стрілочну ф-цію
+        // users.forEach((user)=>{
+        //     if (!user.status) {
+        //         console.log(user);
+        //     }
+        // })
+
+// filter()
+        // let filter = users.filter(function (user) {
+        //     return user.status;
+        // });
+        //
+        // console.log(filter);
+//використання стрілочної ф-ції
+//         let filter = users.filter((user => user.status));
+//     console.log(filter);
+//метод filter вимагає щоб був return і щоб цей return був булевивим
+//ми кажем: візьми кожного юзера і якщо його статус true виконай дію
+//ми працюємо з обєктом а не з окремими елементами         
+//інший варіант запису того ж методу
+//         let filter = [];
+//         for (const user of users) {
+//             if (user.status) {
+//                 filter.push(user);
+//             }
+//         }
+
+//map()
+//         Mетод дозволяє застосувати задану функцію для кожного елемента масиву. При цьому метод не змінює вихідний масив, а повертає змінений.
+////       Метод в параметрі отримує функцію, яка виконується для кожного елемента масиву.
+//         Те що поверне ф-ція через return для етемента масиву, стане новим значенням цього елемента
+//         У функції можна передавати 3 параметра.
+//         Якщо ці параметри є (вони не обов'язкові), то в перший автоматично попаде елемент масиву, у другому попаде його номер у масиві (індекс),
+//         а в третьому - сам масив.
+//         let map = users.map(value => value.name);
+//         console.log(map);
+//  value - довільна назва в якій зберігається обєкт масиву. За допомогою callback ми кажем візьми з обєкта параметр name і передай в map(масив)
+//  цей метод дає можливість приймати одні значення а повертати інші
+//  також можна повернути кілька параметрів
+//         let map1 = users.map(value => ({name: value.name, age: value.age}));
+//         console.log(map1);
+//  можна задавати кілька аргументів
+//  user-ітеруємий ел-т в масиві; index-порядковий індекс; array- масив в якому він знаходить
+//  можна додати властивості до обєкту масив (index)
+//         let map3 = users.map((user, index, array) => {
+//             console.log(index)
+//
+//             return {
+//                 name: user.name,
+//                 age: user.age,
+//                 status: user.status,
+//                 id: index+1
+//             };
+//         });
+//         console.log(map3);
+//         //скорочений запис
+//         let map4 = users.map((user, index) => ({name: user.name, age: user.age, status: user.status,id: index+1}));
+//         console.log(map4);
+
+        // //spred operator...user
+        // let map5 = users.map((user, index) => ({...user, id: index + 1}));
+        // console.log(map5);
+
+// find()
+//         let find = users.find(value => value.name === 'max');
+//         console.log(find);
+
+//sort() ф-ція приймає 2 аргументи (user1 i user2) і між собою їх порівнює, якщо різниця 1(то це означає що юзер1 важчий ніж юзер2 і вони поміняються місцями)
+//         let sort = users.sort((user1, user2) => user1.age - user2.age);
+//         console.log(sort);
+// // відсортувати за алфавітом
+//         let sort2 = users.sort((user1, user2) => {
+//             if (user1.name > user2.name) {
+//                 return 1;
+//             }
+//             if (user1.name < user2.name) {
+//                 return -1;
+//             }
+//             if (user1.name === user2.name) {
+//                 return 0;
+//             }
+//         });
+//         console.log(sort2);
+
+
+ //reduce-зменшення (можкмо перетворити масив з 11 обєктів на обєкт в якому буде 2 масива)
+   //  -----> {trueStatus: [...], falseStatus: [...]}
+//Метод reduce() виконує задану функцію кожного елемента масиву і повертає «акумульований» результат.
+
+      let reduce=  users.reduce(function (accumulator,user){
+           if(user.status){
+               accumulator.statusTrue.push(user);//
+           } else {
+               accumulator.statusFalse.push(user)
+           }
+           return accumulator;
+
+        }, {statusTrue:[], statusFalse:[]})
+        console.log(reduce);
+        //
+        // // users.forEach(function (value) {
+        // //     console.log(value);
+        // // });
+        // //
+        // // users.forEach(value => console.log(value));
+        // //
+        // // let filteredUsers = users.filter(value => value.age > 30);
+        // // console.log(filteredUsers);
+        // // console.log(users);
+        // //
+        // // let mapedUsers = users.map(function (value, index) {
+        // //     return {...value, id: index + 1};
+        // // });
+        // // console.log(mapedUsers);
+        // //
+        // // users.map((value, index) => {
+        // //     return {id: index + 1, name: value.name, age: value.age, status: value.status}
+        // // })
+        // //
+        // //
+        // // let find = users.find(value => value.name === 'max');
+        // // console.log(find);
+        // //
+        // // console.log(users.every(value => value.status));
+        // // console.log(users.some(value => value.status));
+        //
+        //
+        // // let sort = users.sort((u1, u2) => {
+        // //     return u2.age - u1.age;
+        // // });
+        // // console.log(sort);
+        //
+        // // console.log(users.sort((a, b) => {
+        // //     if (a.name < b.name) {
+        // //         return 1;
+        // //     }
+        // //     if (a.name > b.name) {
+        // //         return -1
+        // //     }
+        // //     if (a.name === b.name) {
+        // //         return 0
+        // //     }
+        // // }));
+        //
+        //
+        // console.log(users.reduce((accumulator, user) => {
+        //     if (user.status) {
+        //         accumulator.statT.push(user);
+        //     } else {
+        //         accumulator.statF.push(user);
+        //     }
+        //     return accumulator;
+        // }, {statT: [], statF: []}));
+        //
+        // console.log(users);
+
+
+    //     let users = [
+    // {name: 'vasya', age: 31, status: false},
+    // {name: 'petya', age: 30, status: true},
+    // {name: 'kolya', age: 29, status: true},
+    // {name: 'olya', age: 28, status: false},
+    // {name: 'max', age: 30, status: true},
+    // {name: 'anya', age: 31, status: false},
+    // {name: 'oleg', age: 28, status: false},
+    // {name: 'andrey', age: 29, status: true},
+    // {name: 'masha', age: 30, status: true},
+    // {name: 'olya', age: 31, status: false},
+    // {name: 'max', age: 31, status: true}
+    //     ];
+    //
+    //     function filter(array, predicateFn) {
+    //     let filterArr = [];
+    //     for (const item of array) {
+    //     if (predicateFn(item)) {
+    //     filterArr.push(item);
+    // }
+    // }
+    //     return filterArr;
+    // }
+
+        // console.log(filter(users, (item) => item.status));
+        // console.log(filter(users, (item) => item.age > 30));
+
+
+        let products = [
+    {
+        title: 'milk',
+        price: 22,
+        image: 'https://www.mcqueensdairies.co.uk/wp-content/uploads/2019/02/Mcqueens_1litre_whole_organic-300x300-3.jpg'
+    },
+    {
+        title: 'juice',
+        price: 27,
+        image: 'https://images-na.ssl-images-amazon.com/images/I/61jL2GCuKLL._SX679_PIbundle-24,TopRight,0,0_AA679SH20_.jpg'
+    },
+    {
+        title: 'tomato',
+        price: 47,
+        image: 'https://dictionary.cambridge.org/ru/images/thumb/tomato_noun_001_17860.jpg?version=5.0.74'
+    },
+    {
+        title: 'tea',
+        price: 15,
+        image: 'https://yogiproducts.com/wp-content/uploads/2009/03/YT-US-CAR-RelaxedMind-C23-202201-V2-3DFront_withGlow-300DPI-1.png'
+    },
+        ];
+
+        console.log(filter(products, (value) => value.price > 15));
+
+
+</script>
+
+</body>
+
+</html>
