@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+    <meta name = "viewport"
+          content="width=device-width, user-scalable=no, initial-scale =1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title> Features JS </title>
+</head>
+
+<body>
+<script>
+/*    objects ES6
+
+    let name = 'oksana';
+    let age = 31;
+
+    let user={
+        name,// name:name
+        age //age: age
+    }
+    console.log(user);
+
+    let user2 = 'oleg';
+    let age = 33;
+    function greetings(){
+        console.log('Hi')
+    }
+
+    let user2= {
+        name,
+        age,
+        greeting () {
+            console.log('Hi');
+        },
+    }
+
+    user2.greeting();*/
+
+/*Destructuring object
+
+    let user = {
+        name: 'oleg',
+        age: 33,
+        height: 186
+    }
+
+    let name = user.name;
+    let age = user.age
+    let  height = user.height;
+
+    let {age, name, height} = user3;//послідовність немає значення, і якщо додамо властивість якої немає буде андерфайн
+    console.log(name,age);
+
+    function foo ({name,age}){
+    }
+    foo({name: 'oleg', age: 31});
+
+щоб отримати доступ до властивості обєкту wife:
+    let {wife: {name}} = user;
+    console.log(name);
+щоб звернутися безпосередньо до обєкту wife:
+    let {wife,wife:{name}}= user;
+    console.log(wife);
+
+щоб звернутися до властивості обєкта user у якого також є властивість name, ми можемо зарезервувати значення глобальної змінної
+name:userName створивши для неї псевдонім
+    let {wife,wife: {name}, name:userName} = user;
+    console.log(name);
+    console.log(wife);
+    console.log(userName)*/
+
+/*destructuring arrays
+
+    let arr = [11, 22, 33];
+    let a = arr[1];
+    // let b = arr[2];
+    // let c = arr[3];
+
+    let [a, b, c] = arr; //це буде означати що в змінних a,b,b будуть знаходитись значення 11,22,33 відповідно
+    // а масивах послідовність важлива
+
+    console.log(a,c);
+
+    let users = [
+    {name:'vasya', age: 31, status: false},
+    {name:'petya', age: 30, status: true},
+    {name:'kolya', age: 29, status: true},
+    {name:'olya', age: 28, status: false},
+    {name:'max', age: 30, status: true},
+    {name:'anya', age: 31, status: false},
+    {name:'oleg', age: 28, status: false},
+    {name:'andrey', age: 29, status: true},
+    {name:'masha', age: 30, status: true},
+    {name:'olya', age: 31, status: false},
+    {name:'max', age: 31, status: true}
+    ];
+
+    let[u1,u2] = users;// vasya and petya u1 i u2 це не номер індексу а просто назва змінної
+    let {age} = u1;
+    console.log(age);*/
+
+/*
+spread метод-копіюють або зєднують обєкти або масиви
+
+    let user1 = {
+        name: 'Oleg',
+        age: 33
+    };
+    let kokos = {
+        ...user1
+    };
+    console.log(kokos);
+    console.log(user === kokos); //false
+
+    let user = {
+        name: 'oleg',
+        age: 31,
+        wife: {
+            name: 'anna'
+        }
+    };
+    let kokos = {
+        ...user,
+        status: true,
+        name:'kokos'
+    }
+    console.log(kokos);
+    console.log(user.wife === kokos.wife);//true тому що ссилочний тип даних
+*/
+
+/*copy obj
+
+    let user = {
+        name: 'Oleg',
+        age: 33,
+        wife: {
+            name: 'anna'
+        },
+        greeting(){
+            console.log('Hi');
+        }
+    };
+
+    let kokos = {
+        ...user,
+        name: 'kokos',
+        status:true
+    };
+
+    console.log(user.wife===kokos.wife)*/
+
+/*JSON deep copy
+
+    //let user = "{name; 'Oleg, age: 33, wife{'anna}},";
+    //але щоб не робити це вручну існує ф-ція JSON stringify
+  let userJSON = JSON.stringify(user);
+    console.log(userJSON);
+    //щоб повернути значення назад в звичайний обєкт використовуємо ф-цію JSON.parse
+    let parseUser = JSON.parse(userJSON);
+    console.log(parseUser);
+    console.log(parseUser === user);//різні обєкти різні ссилки(посилання)
+    console.log(parseUser.wife === user.wife);
+
+//скорочений запис
+    let parseUser = JSON.parse(JSON.stringify(user));
+    console.log(parseUser);
+    console.log(kokos);*/
+
+ /* Object.assign -копіює поведінку обєкту (створює новий обєкт на основі заданого)
+    let kokos2 = Object.assign({}, user);
+    console.log(kokos2);
+    kokos2.greeting();
+    console.log(kokos2 === user);
+    console.log(kokos2.wife === user.wife)// true тому що це внутрішні обєкти самого user, не відбувається deep copy
+*/
+
+/*deep copy for arrays
+
+let users = [
+{name:'vasya', age: 31, status: false},
+{name:'petya', age: 30, status: true},
+{name:'kolya', age: 29, status: true},
+{name:'olya', age: 28, status: false},
+{name:'max', age: 30, status: true},
+{name:'anya', age: 31, status: false},
+{name:'oleg', age: 28, status: false},
+{name:'andrey', age: 29, status: true},
+{name:'masha', age: 30, status: true},
+{name:'olya', age: 31, status: false},
+{name:'max', age: 31, status: true}
+];
+
+let users2 = [...users];
+console.log(users2);
+console.log(users2 === users);//при тому що це два різних масиви обєкти які знаходяться в users2 будуть мати ті самі посилання що і в users (shallow copy)
+console.log(users[1] === users2[1]);
+let users3 = JSON.parse(JSON.stringify(users));
+console.log(users3);
+console.log(users === users3);
+console.log(users[1] === users3[1]);*/
+
+//closures-замикання
+
+let user = {
+    name: 'max',
+    age: 31,
+    status: true,
+    foo() {
+        console.log('foobar');
+    }
+};
+//на даному eтапі ми можемо звертатися до будь якої влістивості обєкта і навіть змінювати їх
+user.foo();
+console.log(user.name);
+user.age = -1000;
+console.log(user.age);
+
+//створимо ф-цію яка буде приймати аргументи name, age для побудови цього обєкта
+//всередині ф-ції сьворимо локальну обєкт user який ф-ція буде повертати
+//на даному етапі все те ж саме ми маємо доступ до властивостей обєкта
+/*function userBuilder(name, age) {
+    let user = {name, age};
+    return user;
+}
+
+let kokos = userBuilder('kokos', 12);
+console.log(kokos);
+console.log(kokos.name);*/
+
+//реалізувація інкапсуляції(замикання)
+//ми говоримо що прийнявши два аргумента (name, age), ми будуємо обєкт user але повертати ми будемо новий обєкт {}
+//при виклику ф-ції userBuilder отримаємо пустий обєкт
+//далі в середині обєкту який має повертатись (return) ми створюємо ф-цію getAge яка буде звертатись до user.age
+// тобто обєкт який ми повертаємо буде звертатись до user.age і буде повертати про нього інформацію
+//якщо ми після цього викличимо ф-цію userBuilder вона нам поверне обєкт return де буде 2 ф-ції getAge і getName
+//ф-ція getName завязана на локальну змінну user так амо я і getAge і поверне "ххх" і "11" відповідно
+//ми замикаємо ф-цію яку викликаємо ззовніна якійсь локальній змінній яка знаходиться всередині ф-ції
+//змінна user не доступна за межами ф-ції технічно звернутись до неї неможливо!
+// ф-ція  userBuilder генерує новий обєкт який всередині має ф-ції, які завязані на локальному обєкті який безпосередньо
+//знаходиться всередині ф-ції (userBuilder)
+//getAge береться з обєкту return1. return1 у свою чергу це відрацювання обєкту return
+
+//ми не можемо змінювати характеристики даного обєкту(user), але ми можемо додати нову поведінку(ф-цію),
+// setAge яка буде приймати значення age і перевіряти: якщо age > 0 тоді вона буде звертатись до user.age і впроваджувати йому характеристику age
+//наш обєкт return1 є тепер маніпулятором, тому що за допомогою ф-ції setAge ми можемо змінювати параметр age
+//щоб перебрати кожний елемент обєкту cтворюємо ф-цію яка буде повертати деструкторизований обєкт user
+//щоб перебрати обєкт users в циклі: return1.info()
+
+function userBuilder(name, age) {
+    let user = {name, age};
+    return {
+        getAge() {
+            return user.age;
+        },
+        getName() {
+            return user.name
+        },
+        setName(name) {
+            return user.name = name
+        },
+        setAge(age) {
+            if (age > 0) {
+                user.age = age;
+            }
+        },
+        info() {
+            return {...user};
+        }
+    }
+};
+
+let return1 = (userBuilder('xxx', 11));
+console.log(return1);
+console.log(return1.getName());
+console.log(return1.getAge());
+return1.setAge(33);
+console.log(return1.getAge());
+let data = return1.info();
+console.log(data);
+return1.setName('Oleg');
+console.log(return1.getName());
+console.log(return1.info());
+
+//ф-ції які повертають інформацію про поля обєкта називаються getter
+//ф-ції які впроваджують інформацію в поля обєктів називаються setter
+
+</script>
+</body>
+
+</html>
