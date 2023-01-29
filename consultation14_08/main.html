@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+    <meta name = "viewport"
+          content="width=device-width, user-scalable=no, initial-scale =1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title>cons 14.08</title>
+</head>
+
+<body>
+<script>
+ /*   - Створити функцію-валідатор для адрес електронної пошти. Перевірка повинна включати в себе :данні до знака равлика(@),
+ наявність равлика, крапку яка знаходиться не менше ніж на 2 символ далі після равлика,
+ функція не чутлива до регістру (some@email.com,SOME@EMAIL.COM,some@EMAIL.com, і тд - однакові значення)
+    Протестувати на значеннях
+    someemail@gmail.com
+    someeMAIL@gmail.com
+    someeMAIL@i.ua
+    some.email@gmail.com*/
+
+/* const checkEmail = (email) => {
+     const emailArr = email.split('@');
+     if (emailArr.length !=2 ) {
+         return false
+     }
+     const[name, fullDomain]=emailArr//деструктиризація
+     const [beforeDot, afterDot] = fullDomain.split('.');
+     return !(beforeDot.length<2|| !afterDot || !name) // !afterDot = пуста стрінга, !name=пуста снрінга
+
+     console.log(emailArr);
+  };
+      console.log(checkEmail('someeMAIL@gmail.com'));
+ */
+
+/*
+map- метод масиву
+ Метод map дозволяє застосувати задану функцію для кожного елемента масиву. При цьому метод не змінює вихідний масив, а повертає змінений.
+ Метод у параметрі отримує функцію, яка виконається для кожного  ел-та масиву. Те, що поверне ця функція через return елемента масиву, стане новим значенням цього елемента
+ У функцію можна передавати 3 параметри.
+ Якщо ці параметри є (вони не обов'язкові), то перший автоматично потрапить елемент масиву,у другий потрапить його індекс, а в третій - сам масив.
+*/
+ /*const arr = [1, 2, 3, 4, 5];
+ const arr2 = arr.map((elem) => elem * 2);
+ console.log(arr2);*/
+
+ /*Створимо масив, кожен елемент якого отримується так - значення елемента множиться на його порядковий номер у масиві:*/
+
+ /*const arr = [1, 2, 3, 4, 5];
+ const arr2 = arr.map((elem, index) => elem * index);
+ console.log(arr2);
+*/
+
+
+/* const arr = [1, 2, 3, 4, 5, 25, 6, 7, 8,];
+ let numbers = arr.map(() => 1);
+
+ console.log(numbers);*/
+
+/* const arr = [1, 2, 3, 4, 5, 25, 6, 7, 8];
+ const numbers = arr.map((elem, index) => ({name: 'max'}));
+ console.log(numbers);*/
+
+ /*filter*/
+/*
+ let arr = [1,2,3,4,5,25,6,7,8];
+ let numbers1 = arr.filter(() => true);//false - return empty array
+  console.log(numbers1);
+ */
+
+/* let arr = [1,2,3,4,5,25,6,7,8];
+ let numbers = arr.filter((elem) => elem % 2);// поверне тільки непарні
+
+ console.log(numbers)*/
+
+
+ /*reduce можна викоистати як map/filter або одночасною Приймає два аргументиЖ акумулятор і значення
+ Метод reduce згортає масив до одного значення (редукує). Наприклад, за допомогою reduce можна легко визначити суму елементів масиву (тобто масив зведеться до одного значення - до суми елементів).
+Першим параметром метод reduce отримує функцію, яка послідовно виконається для кожного елемента масиву, починаючи з першого.
+У цю функцію можна передавати 4 параметри. Якщо ці параметри є (вони не обов'язкові): проміжний результат, елемент масиву, індекс, а четвертий - сам масив.
+Проміжний результат (accumulator)- це змінна, в яку накопичуватиметься те значення, яке поверне метод reduce, коли перебере всі елементи масиву. Наприклад, туди послідовно можна накопичувати суму елементів масиву:
+спочатку покласти перший елемент, при наступному проході циклу суму першого елемента і другого, при наступному проході - суму першого, другого і третього. І так поки масив не закінчиться.
+Функція, яку приймає reduce, має повертати нове значення проміжного результату.
+Другим параметром методу reduce вказується початкове значення проміжного результату. Якщо його не вказати, то воно дорівнюватиме першому елементу масиву, а обробка елементів почнеться з другого елемента.
+
+arr.reduce(function(accumulator, elem, index, arr) {
+	return new accumulator;
+}, початкове значення);
+ */
+
+ /*Знайдемо суму елементів масиву:*/
+/* let arr = [1, 2, 3, 4, 5, 6];
+ let result = arr.reduce((sum, elem) => {
+     return sum + elem
+ }, 0);
+ console.log(result);*/
+
+/*Знайдемо суму всіх позитивних чисел масиву:*/
+/* let arr = [1, -2, -3, 4, 5, -6];
+ let result = arr.reduce((sum,elem) => {
+     if (elem >= 0) {
+         return sum + elem;
+     } else {
+         return sum
+     }
+ });
+ console.log(result)*/
+
+ /*використаємо reduce щоб замінити map
+ перший масив буде повертати на кожній ітерації  те що в мене буде в acumulator і дію value*2, тобто спочатку це буде acumulator як пустий масив і запише пезше значення помножене на 2 (1*2)
+  на наступній ітерації в acumulator вже буде (1*2=2) і так далі  */
+/* let arr = [1, 2, 3, 4, 5, 25, 6, 7, 8];
+ let arr2 = arr.reduce((acumulator, elem) => [...acumulator, elem * 2], []);    // []- початкове значення, яке автоматичрно запишеться як перше значення accum
+ console.log(arr2);*/
+
+ /*reduce для заміни filter
+ прописуємо умову за якою буде фільтруватись масив, якщо значення true(?), буде повертатись новий масив з новим значенням [...acumulator, value]
+ якщо (:) значення парне повернеться той самий обєкт */
+
+/* let arr = [1, 2, 3, 4, 5, 25, 6, 7, 8];
+ let reduce2 = arr.reduce((acumulator, elem) => elem % 2 ? [...acumulator, elem] : acumulator, []);
+ console.log(reduce2);*/
+
+/*redue - map+filter */
+/* let arr = [1, 2, 3, 4, 5, 25, 6, 7, 8];
+ let reduce3 = arr.reduce((acumulator, elem) => elem % 2? [...acumulator, elem * 2] : acumulator, []);
+ console.log(reduce3);*/
+ //щоб перевірити те саме для парних чисел: elem % 2===0/ !(elem % 2)
+
+ // в даному випадку ми не задаємо початкового значення масиву, тобто acumulator на першій ітерації буде рівний першому елементу масиву, value=2
+ //на другій ітерації першим значенням буде результат (1+3) плюс третє значення
+
+ /*let arr = [1, 2, 3, 4, 5, 25, 6, 7, 8];
+ let sum = arr.reduce((acumulator, value) => acumulator + value);
+ console.log(sum);*/
+
+/*знайти найбільше значення в масиві
+acumulator-перше число,elem - друге число
+*/
+/*
+ let arr = [1, 2, 3, 4, 5, 25, 6, 7, 8];
+ let maxValue = arr.reduce((acumulator, elem) => acumulator > elem ? acumulator : elem);
+ console.log(maxValue);
+*/
+
+/*reduce for objects*/
+ /*вивести наймолодшого юзера*/
+
+ /*let users = [
+ {name:'max', age: 18},
+ {name:'oleg', age: 45},
+ {name:'olha', age: 30,},
+ {name:'kira', age: 14},
+ ];
+
+ let youngestUser = users.reduce((acc, value) => acc.age > acc.value ? acc : value);
+ console.log((youngestUser));*/
+
+/*написати ф-цію яка приймає любу кількість чисел і повертає найменше а виводить найбільше
+nums це масив ел-тів які будуть передані у ф-цію
+робимо припущення, max/min число в масиві з індексрм 0
+за допомогою forEach робимо перевірку, якщо змінна min буде більше за value тоді у значення min буде записуватись значення value
+і якщо max буде меншим за value то в max буде записуватись value */
+
+/* const minMax = (...nums) => {
+     let min = nums[0];
+     let max = nums[0];
+     nums.forEach(value => {
+         if (min > value) {
+             min = value;
+         }
+         if (max < value) {
+             max = value
+         }
+     })
+     console.log(max);
+     return min; //можна повернути два значення, але вже у вигляді обєкту {min,max}
+ };
+ const min=minMax(1, 2, 3, 23, -12, 45);
+ console.log(min);*/
+
+ /*- Напишіть функцію count(str, stringSearch), яка повертає кількість символів stringSearch у рядку str.
+ let symb = "о", str = "Астрономия это наука о небесных объектах";
+ document.writeln(count(str, symb)) // 5 */
+
+
+ const count = (str, stringSearch) => str.split('').reduce((acc, value) => value === stringSearch ? acc + 1 : acc, 0);
+ const search = count('Астрономия это наука о небесных объектах','о');
+ console.log(search);
+
+/*
+створити ф-цію яка буде виводити числа з масиву у зворотньому порядку
+створюємо ф-цію яка буде приймати масив.
+* створюємо змінну result яка буде приймати пустий масив куди буде записуватись результат
+створюємо цикл while з умовою що поки масив буде мати якусь довжину, на кожній ітерації буде видаляти і пушати останній ет-т масиву
+* тобто по одному бубуть видалятися останні ет-ти і добавлятися в новий масив result  */
+
+/* const reverse = (arr)=>{
+     const result = [];
+     while (arr.length){
+         result.push(arr.pop())
+     }
+     return result
+ }
+ console.log(reverse([1, 2, 3, 4, 5]));*/
+
+/*counter на замикання
+суть замикання полягає в тому, що ми замикаєму змінну всередині ф-ції*/
+
+/* const counter = ()=>{
+     let count = 0;
+     return ()=>{
+         return ++count; //return ()=> ++count
+     }
+ }*/
+
+/* let counter1 = counter();
+ let counter2 = counter();
+
+ console.log(counter1());
+ console.log(counter2());
+ console.log(counter1());
+ console.log(counter2());*/
+
+/*також можна повертати обєкт, який потім можна деструктиризувати */
+
+/* const counter = () => {
+     let count = 0;
+    /!* return {
+         getCount: () => ++count
+     }*!/
+
+     return [
+         () => ++count,//масив з 2-х ел-тів: перший це ф-ція яка буде збільшувати каунтер, а другий це ф-ція яка буде його обнуляти
+         ()=> {
+             count = 0;
+         }
+     ];
+ };
+ const [getCount, reset] = counter();
+ console.log(getCount());
+ console.log(getCount());
+ console.log(getCount());
+ console.log(getCount());
+
+ reset();
+
+ console.log(getCount());
+ console.log(getCount());
+ console.log(getCount());
+ console.log(getCount());*/
+
+ /* const {getCount: counter1} = counter();
+  console.log(counter1());
+  console.log(counter1());*/
+
+
+
+/*створити ф-цію яка приймає масив будь-яких обєктів, та повертає масив ключів чих обєктів
+використовуємо метод reduce.
+acc - те що поверне ф-ція, value-обєкт
+повертаємо новий масив на кожній ітерації(...acc) і в нього розпаковую масив ключів за допомогою метода (...Object.keys)
+
+*/
+
+ /*const objects = [
+     {name: 'max', age: 18},
+     {house: 25, street: 15},
+     {car: true}
+ ];
+/!* const keys = objects.reduce((acc, value) => [...acc, ...Object.keys(value)], []);*!/
+
+ const keys = objects.reduce((acc,value)=>{
+     for (const key of Object.keys(value)) {
+         acc.push(key);
+     }
+     return acc
+ },[])
+
+ console.log(keys);*/
+
+ /*Напишіть функцію cutString(str, n), яка видаляє зайві слова з рядка str, залишивши у ній n слів.
+  let str = "Сила тяжести приложена к центру масс тела";
+ document.writeln(cutString(str, 5)) // 'Сила тяжести приложена к центру'
+
+ за допомогою join конвертуємо масив в стрінгу
+*/
+ const cutString= (str,n)=>{
+     return str.split(' ').slice(0, n).join (' ');
+ }
+
+ cutString("Сила тяжести приложена к центру масс тела", 5);
+
+ /*- Напишіть функцію capitalize(str), яка повертає рядок, у якому кожне слово починається з великої літери.*/
+
+ const capitalize = (str) => str.split(' ').map(word=> word.toUpperCase());
+
+
+ console.log(capitalize('Сила тяжести приложена к центру масс тела'));
+</script>
+
+</body>
+
+</html>
