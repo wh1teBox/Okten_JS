@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+    <meta name = "viewport"
+          content="width=device-width, user-scalable=no, initial-scale =1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title>Class in JS</title>
+</head>
+
+<body>
+<script>
+    /*всередині класу Юзер буде ф-ція конструктор(по іншому назвати не можна), яка буде приймати значення name i age
+    далі в тілі класу прописуємо ф-цію greeting. this буде посилатися на майбутній обєкт */
+
+class User{
+    constructor(name,age){
+        this.name = name;
+        this.age = age;
+    }
+    greeting(){
+        console.log(`hello my name is ${this.name}`);
+    }
+}
+
+    let user = new User('Oleg',33);
+    console.log(user);
+    user.greeting();
+
+ /* за допомогою класів легше реалізувати наслідування
+ клас SuperUser бере за основу клас User і його розширяє (extends)
+ у ф-цію constructor потрібно визначити арументи і впередати у батьківську ф-цію */
+
+    class SuperUser extends User{ //SU буде використовувати U як основу
+       constructor(name,age,password) { //конструктор SU буде містити посилання на кокструктор U zrbq
+           super(name,age);// те саме що і this тільки для батьківського класу
+           this.password = password;
+       }
+    }
+
+    let su = new SuperUser('Luke', 35,'erf45');
+    console.log(su);
+    su.greeting();//Hello my name is Luke
+
+    /*наслідування може бути тільки за такою схемою
+    U->SU->>SSU; одночосно від U можна створити наприклад кастомера
+    але не можна щоб наслідування йшло він SU батьківським має бути лише одна ф-ція конструктор*/
+
+</script>
+
+</body>
+
+</html>

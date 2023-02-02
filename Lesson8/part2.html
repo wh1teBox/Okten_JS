@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+  /*контекст оператора this і можливість його підміни*/
+
+  function User(name,age){
+    this.name = name;
+    this.age = age;
+      this.greeting = function (msg) {
+          console.log(`${msg} my name is ${this.name}`);
+      };
+  }
+
+  let you = new User('Oleg',33);
+  you.greeting('Hello');
+
+  /*наприклад ви створюєте новий обєкт для якого немає ф-ції конструктора
+  у вашого друга немає можливості привітатись і ви хочете привітатись замість нього
+  на даному етапі this посилається на обєкт you*/
+
+  let friend = {
+      name: 'kokos',
+      age: 22,
+      password: '12345'
+  };
+
+ /*щоб отримати доступ до контексту ф-ції конструктора можна викотристовувати ф-ції apply, call,bind
+ *apply в першому агрументі приймає новий контекс ключового слова this
+ тобто зараз буде викликатись фуннкція greeting, але тепер this який ссилався на обєкт you, this буде ссилатись на обєкт friend
+ функцію greeting викликати не потрібно виклик її вже вбудований у ф-цію apply
+ у випадку якщо greetings має у собі якийсь параметр тоді ми можумо передати цей параметр в apply який дозволяє визначити всі параментри які підуть у ф-цію
+ першим аргументом є контекст this, дгугий агрумент це масив ваших можливих аргументів в середині ф-ції (greeting) ['hello']*/
+
+  you.greeting.apply(friend,['hi']);
+
+/*Function.call() - викликає функцію з вказаним значенням this і заданими параметрами (аргументами).
+call() який дозволяє викликати функцію з прив'язкою this до вказаного об'єкту thisObj.
+Метод call подібний на apply за винятком типу параметрів. Ф-ція call приймає аргументи у вигляді var args(rest arguments) */
+
+  you.greeting.call(friend,'Great');
+
+  /*Метод bind може прив'язати контекст до функції. Як перший параметр слід передавати контекст, а наступними параметрами - параметри функції.
+  Метод повертає нову функцію, всередині якої this буде рівним переданому контексту.
+  function.bind(thisObj [,par1, par2, ...])
+  function - об'єкт функції (ім'я функції).
+  thisObj - значення яке передається this.
+  par1, par2 - параметри які передаються функції.
+  bind() метод об'єкта Function який створює нову прив'язану функцію до об'єкта thisObj.
+
+Метод є подібний до Function.call(). Різниця в тому що Function.call() викликає функцію, тоді як bind() повертає нову функцію в якій this буде вказаний параметр thisObj.
+  */
+
+  let copyWithBind = you.greeting.bind(friend);
+  copyWithBind('aloha');// нова ф-ція яка приймає всі аргументи ф-ції User
+
+  console.log(you.greeting() === copyWithBind()); //true
+
+
+  /*наслідування за допомогою apply and call
+  це можливість побудувати обєкт або ф-цію контструктор на базі іншої ф-ції конструктор*/
+/*
+*function User(name,age){
+    this.name = name;
+    this.age = age;
+      this.greeting = function (msg) {
+          console.log(`${msg} my name is ${this.name}`);
+      };
+  }*/
+/*  function SuperUser (name,age,password){
+      this.name = name;
+      this.age = age;
+      this.password = password;
+      this.greeting = function (msg) {
+          console.log(`${msg} my name is ${this.name}`);
+      };
+  }*/
+/*ці дві ф-ції дуже однакові і щоб не дублювати можна просто видалити характеристики і поведінки які дублюються
+всередині SuperUser ми викликаємо ф-цію User (конструктор) apply()this. В межах SuperUser this ссилається на майбутній обєкт SuperUser
+arguments-другий параметр це масив всіх аргументів ф-ції SuperUser
+Ваша ф-ція конструктор буде викликати іншу ф-цію конструктор і застосовувати до неї apply і в межах ф-ції SuperUser
+ this це майбутній SuperUser і аргументи ф-ції User будуть заповнюватись значеннями обєкту SuperUser
+ послідовність аргументів повинна зберігатись
+ */
+
+  function SuperUser(name, age, password) {
+      User.apply(this, arguments);
+      this.password = password;
+  }
+
+  let superUser = new SuperUser('Olga', 33, 'fgf6');
+  superUser.greeting('Hey');
+  console.log(superUser);
+
+  /*prototype - метод (властивість) розширювати обєктиб класи
+  * тобто у ф-ції SuperUser в this зявиться додаткова property, яка буде являти собою ф-цію foo
+  метод prototype використовується здебільшого у тому випадку якщо немає доступу до коду(код підключений через іншу ббліотеку), і щоб розширити можливості цього коду використовується метод prototype*/
+  SuperUser.prototype.foo = () => {
+      console.log('foobar', this) };
+      superUser.foo();
+
+/* Class Array - всі масиви являються екземплярами класу Array */
+
+  let nums = [11, 22, 33];
+  Array.prototype.print = function (){
+      console.log(this);
+  }
+  nums.print(); //error nums.print is not a function. Після того як ми розширили властивості масиву і додали ф-цію прінт в консоль виведеться наш масив
+
+/*для того щоб в усіх масивах зявився метод print(), потрібно звернутися до класу Array і викликати метод prototype і вказати що саме ми хочемо добавити в мому випадку це ф-ція print
+яка буде виводити той обєкт від імені якого я його викликаю тобто this це буде майбутній обєкт
+  стрілочншу конструкцію тут застосовувати не можна
+  цей код буде працювати тільки з тої точки де ви його написали і дальше*/
+
+</script>
+</body>
+</html>
