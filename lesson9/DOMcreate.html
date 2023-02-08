@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+    <meta name = "viewport"
+          content="width=device-width, user-scalable=no, initial-scale =1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta htpp-equiv=X-UA-Compatible" content="ie=edge">
+<title> </title>
+    <style>
+        div {
+            width: 200px;
+        }
+        img{
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+<div class = 'target'></div>
+<ul class="ListOfUsers"></ul>
+<div class = 'product-box'></div>
+
+
+<script>
+
+    let h2 = document.createElement('h2');//ел-т автоматично в структуру не додається, для цього потрібні додаткові методи
+    h2.innerText = 'title';
+    h2.style.background = 'silver';
+
+    document.body.appendChild(h2);//ел-т з'явився в структурі html
+
+    let target = document.getElementsByClassName('target') [0];
+    target.appendChild(h2);
+
+    let cloneNode = h2.cloneNode(true);
+    cloneNode.innerText = 'Text2';
+    target.appendChild(cloneNode);
+
+    /*значення будуть мінятися в обох якщо поміняти одне з них, але якщо винести h2.cloneNode(true) в окрему змінну і присвоїи їй значення тоді це вже буде два окремих нода*/
+
+/*    let cloneNode = h2.cloneNode((true));
+    cloneNode.innerText = 'new Text';//
+    target.appendChild(cloneNode);*/
+
+
+
+
+ let users = [
+ {name:'vasya', age: 31, status: false},
+ {name:'petya', age: 30, status: true},
+ {name:'kolya', age: 29, status: true},
+ {name:'olya', age: 28, status: false},
+ {name:'max', age: 30, status: true},
+ {name:'anya', age: 31, status: false},
+ {name:'oleg', age: 28, status: false},
+ {name:'andrey', age: 29, status: true},
+ {name:'masha', age: 30, status: true},
+ {name:'olya', age: 31, status: false},
+ {name:'max', age: 31, status: true}
+ ];//this array comes from DB
+
+    for (const user of users) {
+        let li = document.createElement('li');
+        li.innerText = `${user.name} - ${user.age}`;
+
+        let listOfUsers = document.getElementsByClassName('ListOfUsers') [0];
+        listOfUsers.appendChild(li);
+
+    }
+
+let products = [
+    {
+        title: 'milk',
+        price: 22,
+        image: 'https://images.immediate.co.uk/production/volatile/sites/30/2020/02/Glass-and-bottle-of-milk-fe0997a.jpg?quality=90&webp=true&resize=300,272'
+    },
+    {
+        title: 'juice',
+        price: 27,
+        image: 'https://cdn2.foodviva.com/static-content/food-images/juice-recipes/fresh-tomato-juice-recipe/fresh-tomato-juice-recipe.jpg'
+    },
+    {
+        title: 'bread',
+        price: 35,
+        image: 'https://www.seriouseats.com/thmb/gBMNe_J1QqbAz_QAXfW7-bRrhnw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/better-no-knead-bread-recipe-hero-01_1-48d654bfadeb4a5caf9b233b00fc74ca.JPG'
+    },
+    {
+        title: 'tea',
+        price: 15,
+        image: 'https://cdn1.sph.harvard.edu/wp-content/uploads/sites/30/2019/07/beverage-blur-cup-370018-768x560.jpg'
+    }
+];
+
+    for (const product of products) {
+        let div = document.createElement('div');
+        div.classList.add('listOfProducts');//створюємо клас для div
+        let productTitle = document.createElement('h2');
+        productTitle.innerText = `${product.title} - ${product.price}`;
+        div.appendChild(productTitle);
+
+        let image = document.createElement('img');
+        image.src = product.image;
+        div.appendChild(image);
+
+        let productBox = document.getElementsByClassName('product-box')[0];
+        productBox.appendChild(div);
+    }
+
+
+</script>
+
+</body>
+
+</html>

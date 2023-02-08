@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+    <meta name = "viewport"
+          content="width=device-width, user-scalable=no, initial-scale =1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta htpp-equiv=X-UA-Compatible" content="ie=edge">
+<title>DOM</title>
+</head>
+
+<body>
+
+<ul class = 'menu' id = 'list-1'>
+    <li class="a b c">item 1 1</li>
+    <li>item 1 2</li>
+    <li>item 1 3</li>
+    <li>item 1 4</li>
+    <li>item 1 5</li>
+</ul>
+
+<ul class = 'menu' id = 'list-2'>
+    <li>item 2 1</li>
+    <li>item 2 2</li>
+    <li>item 2 3</li>
+    <li>item 2 4</li>
+    <li>item 2 5</li>
+</ul>
+
+<script>
+    /*DOM - document object model
+ Відповідно до об'єктної моделі документа («Document Object Model», коротко DOM), кожен HTML-тег є об'єктом.
+ Вкладені теги є дітьми батьківського елемента. Текст, який знаходиться всередині тегу, є об'єктом.
+ Наприклад, document.body – об'єкт для тегу <body>
+ DOM має деревоподібну ієархію. Документ DOM складається з вузлів Node. Кожен вузол може містити у собі вбудований вузол, елемент, текст чи коментар.
+HTML коментар
+<!-- коментар html --> для браузера це також вузол.*/
+
+/*  console.log(document.body);
+    console.log(document.head);
+    console.log(document.head.children); // повертаємо HTML collection, children - pseudo array [] його можна ітерувати, але до нього не можна застосовувати методи і ф-ції
+    console.log(document.head.childNodes); //return- Node List (список вузлів)*/
+
+ /*children (obj) - псевдо масив який наповнюється html-елементами і ми повертаємо HTML колекцію
+  childNodes (obj) - повертає список вузлів (nodes) у вузлі пробіл є текстом */
+
+    let nodeList = document.head.childNodes;
+    console.log(nodeList);
+
+    /*meta є тегом тому його можна проітерувати його властивості
+    TEXT_NODE, ELEMENT_NODE, COMMENT_NODE - типи вузлів
+    nodeType елемента який ітерується рівний типу цього ноду
+    це використовується, щоб парсити HTML doc- перебирати вузли, виводити їхні типи  */
+
+ /*   for (const nodeListElement of nodeList) {
+        if (nodeListElement.nodeType === Node.TEXT_NODE) {
+            console.log(nodeListElement, 'text');// виводимо ел-т і кажемо що це текст
+        } else if (nodeListElement.nodeType === Node.COMMENT_NODE) {
+            console.log(nodeListElement, 'comment');
+        } else if (nodeListElement.nodeType === Node.ELEMENT_NODE) {
+            console.log(nodeListElement, 'tag');
+        }
+    }*/
+
+    console.log(document.body);
+
+/*отримати перший елемент який має id 'list-1'*/
+
+/*    let list1 = document.getElementById('list-1');
+    console.log(list1);*/
+
+/*    list1.style.background = 'silver' /!*впроваджує інлайн стилі які важко потім поміняти*!/*/
+
+ /*доступитися до ел-тів всередині тегу <ul>*/
+  /*  console.log(list1.children);
+    let liList = document.getElementsByTagName('li');
+    console.log(liList);//отримуємо всі ел-ти li з 2-х списків
+    let liList1 = list1.getElementsByTagName('li'); //отримаємо лішки тільки з першого лісту
+    console.log(liList1);*/
+
+    /*доступитися до ел-ту за класом*/
+/*    let menus = document.getElementsByClassName('menu');
+    console.log(menus);*/
+
+    /*querySelector знаходить тільки один ел-т*/
+ /*   let liList = document.querySelector('.menu:nth-child(1)>li');
+    console.log(liList);*/
+
+    /*querySelectorAll-повертає NodeList, не фіксує зміни, тобто якщо в коді будуть зміни він їх не побачить*/
+/*    let liList = document.querySelectorAll('.menu:nth-child(1)>li');
+    console.log(liList);*/
+
+ /*CSS псевдоклас :nth-child() знаходить один або більше ел-тів, виходячи з їхньої позиції серед групи сусідніх елементів.*/
+
+  /*Part2*/
+    /*вивести ul1*/
+    let ul1 = document.getElementsByTagName('ul')[0];
+    console.log(ul1);
+
+    let li1 = document.getElementsByTagName('li')[0];
+    console.log(li1);
+//    console.log(li1.innerText);
+/*    li1.innerText = '<strong>okten</strong>';
+    console.log(li1);*/
+
+    /*li1.innerHTML = '<strong>okten</strong>';//впровадження нового значення
+    console.log(li1.innerText);//зчитування
+
+    console.log(li1.classList);
+    li1.classList.add('newClass');
+    console.log(li1.classList.item(0));
+    li1.classList.remove('a');
+    console.log(li1);
+    li1.classList.toggle('b');//Перевіряє чи існує клас b в li1, якщо так, то JS прибере цей клас, якщо ні, то додасть. Це свого роду перемикач, який спрацює на зворотній результат
+*/
+
+</script>
+
+</body>
+
+</html>

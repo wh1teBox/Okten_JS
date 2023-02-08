@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+    <meta name = "viewport"
+          content="width=device-width, user-scalable=no, initial-scale =1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta htpp-equiv=X-UA-Compatible" content="ie=edge">
+<title>Events</title>
+</head>
+
+<body>
+<!--впровадження івенту
+<button onclick ="(function (){
+        console.log('click done');
+}())"></button>-->
+
+<!--<button>Click me</button>
+<div> </div>-->
+
+<form name = "f1">
+    <input type="text" name="name">
+    <input type="number" name="age">
+    <input type="checkbox" name="status">
+    <button>Save User</button>
+</form>
+
+<script>
+/*let button = document.getElementsByTagName("button")[0];
+console.log(button);
+button.onclick = function (eventObj){
+    console.log('click done', eventObj);
+    let horizontalAxis = eventObj.clientX;
+    let verticalAxis = eventObj.clientY;
+    console.log(horizontalAxis, verticalAxis);*/
+
+/*rgb -ф-ція визначення кольору
+let div = document.getElementsByTagName('div')[0];
+div.style.height = '200px';
+div.style.width = '200px';
+div.style.background = 'silver';
+
+div.onmousemove = function (e){
+    console.log(e.clientX, e.clientY);
+    this.style.background = `rgb(${e.clientX} ${e.clientY} ${e.clientX})`;
+}*/
+
+let users = [
+{name:'vasya', age: 31, status: false},
+{name:'petya', age: 30, status: true},
+{name:'kolya', age: 29, status: true},
+{name:'olya', age: 28, status: false},
+{name:'max', age: 30, status: true},
+{name:'anya', age: 31, status: false},
+{name:'oleg', age: 28, status: false},
+{name:'andrey', age: 29, status: true},
+{name:'masha', age: 30, status: true},
+{name:'olya', age: 31, status: false},
+{name:'max', age: 31, status: true}
+];
+
+let form1 = document.forms.f1;
+form1.onsubmit = function (e){
+    e.preventDefault();//сторінка перестане перезавантажуватись
+    let name = this.name.value;//this це наша form1, за допомогою formsAPI доступитися до форм можна за допомогою age i name
+    let age = this.age.value;
+    let status = this.status.checked
+    let user = {name, age, status};
+    users.push(user);
+    console.log(users);
+    /*console.log('save',name,age);*/
+    //console.log(this.status.checked);
+}
+
+
+
+
+</script>
+</body>
+
+</html>
